@@ -1,14 +1,40 @@
 <div class="background-image"></div>
 <div class="container">
-    <h1>Currency Information</h1>
+    <h1>Learn About Currencies</h1>
+    <p>
+        Currencies are systems of money in common use, especially for nations. Each currency has a specific code and
+        value that fluctuates based on the global economy. Here are some interesting facts about currencies:
+    </p>
     <ul>
-        <li><strong>USD:</strong> United States Dollar</li>
-        <li><strong>EUR:</strong> Euro</li>
-        <li><strong>GBP:</strong> British Pound</li>
-        <li><strong>JPY:</strong> Japanese Yen</li>
-        <li><strong>AUD:</strong> Australian Dollar</li>
-        <li><strong>INR:</strong> Indian Rupee</li>
-        <li><strong>CAD:</strong> Canadian Dollar</li>
+        <li>
+            <strong>USD (United States Dollar):</strong> The most widely used reserve currency globally.
+        </li>
+        <li>
+            <strong>EUR (Euro):</strong> The official currency of 19 of the 27 European Union member states.
+        </li>
+        <li>
+            <strong>JPY (Japanese Yen):</strong> Known for its stability and widespread use in trading.
+        </li>
+        <li>
+            <strong>GBP (British Pound Sterling):</strong> The oldest currency still in use.
+        </li>
+        <li>
+            <strong>AUD (Australian Dollar):</strong> Often called the "Aussie," it is heavily influenced by commodity
+            prices.
+        </li>
     </ul>
+
+    <h2>Exchange Rates</h2>
+    <p>
+        Below is a list of the latest exchange rates relative to the USD, based on live data:
+    </p>
+
+    <!-- Afișează listele de conversii -->
+    <ul>
+        <li *ngFor="let currency of currencies">
+            <strong>{{ currency.code }}:</strong> {{ currency.rate }}
+        </li>
+    </ul>
+
     <button (click)="goToHome()">Back to Home</button>
 </div>

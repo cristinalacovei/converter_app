@@ -1,13 +1,26 @@
-/* Fundal general */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #121212;
-    /* Fundal fallback */
-    color: #ffffff;
-    /* Text alb */
+    color: white;
     position: relative;
-    overflow: hidden;
+    /* Schimbat din fixed */
+    overflow: auto;
+    /* Permite scroll-ul */
+}
+
+/* Containerul central */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.85);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    /* Asigură scroll-ul în container */
 }
 
 /* Imagine de fundal */
@@ -26,17 +39,7 @@ body {
     /* Semi-transparență */
 }
 
-/* Container central */
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: rgba(30, 30, 30, 0.85);
-    /* Gri închis semi-transparent */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
+
 
 /* Titlurile */
 h1,

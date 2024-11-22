@@ -24,9 +24,11 @@
         </div>
         <button type="submit" [disabled]="converterForm.invalid">Convert</button>
     </form>
+
     <div *ngIf="convertedAmount !== null">
         <h3>Converted Amount: {{ convertedAmount }} {{ toCurrency }}</h3>
     </div>
+
     <button (click)="goToHome()">Back to Home</button>
     <button (click)="goToCurrencyInfo()">Learn about currencies</button>
 </div>

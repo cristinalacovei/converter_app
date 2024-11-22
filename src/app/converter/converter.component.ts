@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ExchangeRateService } from '../services/exchange-rate.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-converter',
@@ -10,29 +11,55 @@ import { Router } from '@angular/router';
   templateUrl: './converter.component.html',
   styleUrls: ['./converter.component.css'],
 })
-export class ConverterComponent {
-  constructor(private router: Router) {}
-
+  
+export class ConverterComponent implements OnInit {
   amount: number = 0;
   fromCurrency: string = 'USD';
   toCurrency: string = 'EUR';
   convertedAmount: number | null = null;
-  currencies: string[] = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'INR', 'CAD'];
+  currencies: string[] = [];
+  exchangeRates: { [key: string]: number } = {};
+
+  constructor(
+    private exchangeRateService: ExchangeRateService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.loadExchangeRates();
+  }
+
+loadExchangeRates() {
+  this.exchangeRateService.getExchangeRates().subscribe({
+    next: (data) => {
+      console.log('Raw API Data:', data); // Loghează răspunsul brut
+      if (data && data.quotes) {
+        this.exchangeRates = data.quotes; // Asignează rates către exchangeRates
+        console.log('Exchange Rates:', this.exchangeRates); // Loghează rates
+        this.currencies = Object.keys(this.exchangeRates).map((key) =>
+          key.replace('USD', '') // Extrage simbolurile valutelor
+        );
+        console.log('Currencies:', this.currencies); // Loghează lista valutelor
+      } else {
+        console.error('Unexpected API Response:', data); // Loghează problemele cu răspunsul
+      }
+    },
+    error: (err) => {
+      console.error('Error fetching exchange rates:', err); // Loghează erorile
+    },
+  });
+}
+
+
 
   convertCurrency() {
-    const exchangeRates: { [key: string]: number } = {
-      USD: 1,
-      EUR: 0.85,
-      GBP: 0.75,
-      JPY: 110,
-      AUD: 1.35,
-      INR: 74.5,
-      CAD: 1.25,
-    };
-
-    const rateFrom = exchangeRates[this.fromCurrency];
-    const rateTo = exchangeRates[this.toCurrency];
-    this.convertedAmount = (this.amount / rateFrom) * rateTo;
+    const rateFrom = this.exchangeRates[`USD${this.fromCurrency}`];
+    const rateTo = this.exchangeRates[`USD${this.toCurrency}`];
+    if (rateFrom && rateTo) {
+      this.convertedAmount = (this.amount / rateFrom) * rateTo;
+    } else {
+      this.convertedAmount = null; // Gestionare erori
+    }
   }
 
   goToHome() {
@@ -40,6 +67,6 @@ export class ConverterComponent {
   }
 
   goToCurrencyInfo() {
-    this.router.navigate(['/currency-info']); // Navighează la pagina de informații despre monede
+    this.router.navigate(['/currency-info']);
   }
 }
