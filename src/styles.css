@@ -1,1 +1,142 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fundal general */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    /* Fundal fallback */
+    color: #ffffff;
+    /* Text alb */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagine de fundal */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/images/converter.jpg') no-repeat center center/cover;
+    filter: blur(8px);
+    /* Efect de blur */
+    z-index: -1;
+    /* Fundal sub conținut */
+    opacity: 0.5;
+    /* Semi-transparență */
+}
+
+/* Container central */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.85);
+    /* Gri închis semi-transparent */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Titlurile */
+h1,
+h3 {
+    color: #ff69b4;
+    /* Roz */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Textul paragrafului */
+p,
+ul,
+li {
+    color: #d3d3d3;
+    /* Gri deschis */
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Input-uri și select-uri */
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ff69b4;
+    /* Roz */
+    background-color: #1e1e1e;
+    /* Gri închis */
+    color: #ffffff;
+    /* Alb */
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Input hover/focus */
+input:hover,
+select:hover,
+input:focus,
+select:focus {
+    border-color: #ff85c0;
+    /* Roz mai deschis */
+}
+
+/* Butoanele */
+button {
+    background-color: #ff69b4;
+    /* Roz */
+    color: #121212;
+    /* Negru */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px;
+}
+
+/* Buton hover/active */
+button:hover {
+    background-color: #ff85c0;
+    /* Roz mai deschis */
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #ff4d8b;
+    /* Roz mai închis */
+    transform: scale(1);
+}
+
+/* Listă ordonată */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ff69b4;
+    /* Roz */
+}
+
+/* Animația de fade-in */
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
