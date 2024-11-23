@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
-![Application Screenshot](assets/images/ss1.png)
-![Application Screenshot](assets/images/ss2.png)
-![Application Screenshot](assets/images/ss3.png)
+![Application Screenshot](src/assets/images/ss1.png)
+![Application Screenshot](src/assets/images/ss2.png)
+![Application Screenshot](src/assets/images/ss3.png)
 
 ## Development server
 
